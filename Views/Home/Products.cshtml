@@ -1,0 +1,42 @@
+    <h1>Products | <a href = "categories">Categories</a></h1>
+    <a href="/">Home</a>
+@using ProductsCategories.Models;
+@using Microsoft.AspNetCore.Http;
+@using ProductsCategories.Data;
+@model Product
+New Product
+<form asp-action="AddProd" asp-controller="Home">
+    <span asp-validation-for="Name"></span>
+    <label asp-for="Name"></label>
+    <br>
+    <input asp-for="Name">
+
+    <br>
+    <span asp-validation-for="Description"></span>
+    <label asp-for="Description"></label>
+    <br>
+    <input asp-for="Description">
+
+    <br>
+    <span asp-validation-for="Price"></span>
+    <label asp-for="Price"></label>
+    <br>
+    $<input type="number" min="0.01" step="0.01" asp-for="Price">
+
+
+
+    <br>
+    <input type="submit" value="Add Product">
+</form>
+@{
+    if(ViewBag.Products != null)
+    {
+        foreach(var product in @ViewBag.Products)
+        {
+            <a href="products/@product[0]">@product[1]</a>
+            
+            
+        }
+    }
+    
+}   

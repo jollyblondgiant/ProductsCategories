@@ -1,0 +1,30 @@
+<h1><a href = "products">Products</a> | Categories
+
+</h1><a href="/">Home</a>
+
+@using ProductsCategories.Models;
+@model Category
+
+<form asp-action="AddCat" asp-controller="Home" method="POST">
+    
+    <span asp-validation-for="Name"></span>
+    <label as-for="Name"></label>
+    <br>
+    <input asp-for="Name">
+
+
+
+    <br>
+    <input type="submit" value="Add Category">
+</form>
+
+Existing Categories:
+@{
+    if(ViewBag.Categories != null)
+    {
+        foreach(var cat in ViewBag.Categories)
+        {
+            <a href="categories/@cat[0]">@cat[1]</a>
+        }
+    }
+}
